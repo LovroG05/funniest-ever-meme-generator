@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Meme Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      input[type="text"],
+      input[type="file"] {
+        padding: 8px;
+        font-size: 16px;
+      }
+      button {
+        padding: 12px;
+        font-size: 16px;
+        background: #0073e6;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      button:hover {
+        background: #0059b2;
+      }
+      .meme-preview {
+        margin-top: 30px;
+        text-align: center;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Meme Generator</h1>
+      <form method="POST" enctype="multipart/form-data">
+        <label>
+          Meme image:
+          <input type="file" name="image" accept="image/*" required />
+        </label>
+        <label>
+          Top text:
+          <input type="text" name="top_text" placeholder="TOP TEXT" />
+        </label>
+        <label>
+          Bottom text:
+          <input type="text" name="bottom_text" placeholder="BOTTOM TEXT" />
+        </label>
+        <button type="submit">Generate meme</button>
+      </form>
+
+      {% if meme_url %}
+      <div class="meme-preview">
+        <h2>Your meme</h2>
+        <img src="{{ meme_url }}" alt="Generated meme" />
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
